@@ -46,7 +46,7 @@ router.put('/:articeID', async (req, res) => {
     }
 });
 
-//delete sous categorie
+//delete sous articles
 router.delete('/:articleID', async (req, res) => {
     try {
         const id = req.params.articleID;

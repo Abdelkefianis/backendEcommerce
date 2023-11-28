@@ -6,13 +6,13 @@ const categorieRouter = require("./routes/categorie.route");
 const scategorieRouter = require("./routes/scategorie.route");
 const articleRouter = require("./routes/article.route");
 const scategorie = require('./models/scategorie');
-//const cors = require('cors')
+const cors = require('cors')
 
 dotenv.config()
 const app = express();
 
 //Les cors
-//app.use(cors())
+app.use(cors())
 
 //BodyParser Middleware to use POST method
 app.use(express.json());

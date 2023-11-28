@@ -5,7 +5,7 @@ var router = express.Router();
 const Categorie = require('../models/categorie');
 
 // afficher la liste des categories.
-router.get('/', async (req, res,) => {
+router.get('/', async (req, res) => {
     try {
         const cat = await Categorie.find()
         return res.status(200).json(cat)
@@ -37,11 +37,11 @@ router.get('/:categorieId', async (req, res) => {
 });
 
 // modifier une catégorie
-router.put('/:categorieId', async (req, res) => {
+router.put('/:categorieID', async (req, res) => {
 
     try {
         const cat1 = await Categorie.findByIdAndUpdate(
-            req.params.categorieId, { $set: req.body },
+            req.params.categorieID, { $set: req.body },
             { new: true } // pour que le document mis à jour soit renvoyé dans la réponse
         );
         res.status(200).json(cat1)
@@ -51,9 +51,9 @@ router.put('/:categorieId', async (req, res) => {
 });
 
 // Supprimer une catégorie
-router.delete('/:categorieId', async (req, res) => {
+router.delete('/:categorieID', async (req, res) => {
     try {
-        const id = req.params.categorieId;
+        const id = req.params.categorieID;
         await Categorie.findByIdAndDelete(id)
         res.status(200).json({ message: "categorie deleted successfuly." })
     } catch (error) {

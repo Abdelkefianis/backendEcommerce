@@ -5,6 +5,8 @@ const categorie = require('./models/categorie');
 const categorieRouter = require("./routes/categorie.route");
 const scategorieRouter = require("./routes/scategorie.route");
 const articleRouter = require("./routes/article.route");
+const paymentRouter = require("./routes/payment.route")
+const userRouter = require("./routes/user.route");
 const scategorie = require('./models/scategorie');
 const cors = require('cors')
 
@@ -51,6 +53,8 @@ app.get("/", (req, res) => {
 app.use("/api/categories", categorieRouter);
 app.use("/api/scategories", scategorieRouter);
 app.use("/api/articles", articleRouter);
+app.use('/api/payment', paymentRouter);
+app.use("/api/user", userRouter);
 
 app.listen(process.env.PORT, () => {
 

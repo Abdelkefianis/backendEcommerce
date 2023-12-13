@@ -1,9 +1,10 @@
 const express = require('express');
 var router = express.Router();
 const Article = require('../models/article');
+const { verifyToken } = require("../middleware/verifyToken")
 
-//liste de scategorie
-router.get('/', async (req, res) => {
+//liste des aricles
+router.get('/', verifyToken, async (req, res) => {
     try {
         const art = await Article.find().populate("scategorieID");
         return res.status(200).json(art);

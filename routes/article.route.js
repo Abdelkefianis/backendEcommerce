@@ -1,10 +1,11 @@
 const express = require('express');
 var router = express.Router();
 const Article = require('../models/article');
-const { verifyToken } = require("../middleware/verifyToken")
+const { verifyToken } = require("../middleware/verifyToken");
+const { authorizeRoles } = require("../middleware/authorizeRoles");
 
 //liste des aricles
-router.get('/', verifyToken, async (req, res) => {
+router.get('/', verifyToken, authorizeRoles("user", "admin", "visiteur"), async (req, res) => {
     try {
         const art = await Article.find().populate("scategorieID");
         return res.status(200).json(art);
